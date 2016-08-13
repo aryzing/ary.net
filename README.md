@@ -1,2 +1,2 @@
-# ary.net
+# aryzing.net
 Personal website
