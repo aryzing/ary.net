@@ -50,7 +50,14 @@ tmux list-sessions
 
 ## Useful commands
 
-`ctrl-b ?` List all key bindings
+All commands can be configured with the `~/.tmux.conf` file. Two options that I find particularly useful to configure are the display times of messages. Starting with [version 2.2][v2.2], options can take a display time of `0` indicating a permanent display of messages until a key is pressed.
+
+```sh
+set -g display-panes-time 5000
+set -g display-time 5000
+```
+
+To display all current key bindings, use `ctrl-b ?`. Below are some useful key bindings.
 
 ### Session
 `tmux ls` (or tmux `list-sessions`)
@@ -108,3 +115,4 @@ tmux list-sessions
 [1]:https://youtu.be/BHhA_ZKjyxo
 [2]:https://youtu.be/norO25P7xHg
 [man]: http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+[v2.2][https://raw.githubusercontent.com/tmux/tmux/master/CHANGES]
