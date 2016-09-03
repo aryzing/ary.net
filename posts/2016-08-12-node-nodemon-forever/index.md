@@ -15,7 +15,7 @@ while (1) {
 
 With this simple script, the outputs with each of the different commands are
 
-```
+```sh
 $ node index-infinite.js
 Running...
 Running...
@@ -23,7 +23,7 @@ Running...
 ^C
 ```
 
-```
+```sh
 $ nodemon index-infinite.js
 [nodemon] 1.9.2
 [nodemon] to restart at any time, enter `rs`
@@ -35,7 +35,7 @@ Running...
 ^C
 ```
 
-```
+```sh
 $ forever index-infinite.js
 warn:    --minUptime not set. Defaulting to: 1000ms
 warn:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
@@ -59,7 +59,7 @@ while (1) {
 
 The outputs for each of the commands are
 
-```
+```sh
 $ node index-infinite-error.js
 Running...
 Running...
@@ -73,7 +73,7 @@ Running...
 
 Using `node`, when the error is encountered, execution stops and the terminal prompt is shown.
 
-```
+```sh
 $ nodemon index-infinite-error.js
 [nodemon] 1.9.2
 [nodemon] to restart at any time, enter `rs`
@@ -92,7 +92,7 @@ Running...
 
 Using `nodemon`, a similar output is shown. However, the prompt is not returned to the user on error, and it waits for file changes to be made. If file changes are made, the script will re-run.
 
-```
+```sh
 forever --spinSleepTime 3000 index-infinite-error.js
 warn:    --minUptime not set. Defaulting to: 1000ms
 Running...
@@ -138,7 +138,7 @@ Whenver the script errors out, forever will re-run it. If the script fails short
 
 Now lets analyze what happens when a finite execution time script is run with each of these commands. The script we will use is
 
-```js
+```javascript
 // index-finite.js
 for (var i = 0; i < 10; i++) {
   console.log('Running...');
@@ -149,7 +149,7 @@ When run with `node`, it prints `Running...` ten times to the console as expecte
 
 With nodemon it runs once, and waits for file changes before running it again.
 
-```
+```sh
 $ nodemon index-finite.js
 [nodemon] 1.9.2
 [nodemon] to restart at any time, enter `rs`
@@ -172,7 +172,7 @@ So nodemon's attitude towards execution is something along the lines of "run ind
 
 Forever, on the other hand, does not seem to play nice with finite length scripts. Upon completion, it will just sit there, without returning the prompt to the user.
 
-```
+```sh
 $ forever index-finite.js
 warn:    --minUptime not set. Defaulting to: 1000ms
 warn:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
@@ -196,7 +196,7 @@ Modifying the file does not trigger forever to restart execution either. It just
 
 However, what would happen if forever is run on a finite length script that throws an error before exiting cleanly? Will the error trigger the script to restart? Lets find out with the following script.
 
-```js
+```javascript
 // index-finite-error.js
 for (var i = 0; i < 10; i++) {
   console.log('Running...');
@@ -208,7 +208,7 @@ for (var i = 0; i < 10; i++) {
 
 The console output was
 
-```
+```sh
 $ forever --spinSleepTime 3000 index-finite-error.js
 warn:    --minUptime not set. Defaulting to: 1000ms
 Running...

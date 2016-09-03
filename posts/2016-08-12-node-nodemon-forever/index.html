@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel=stylesheet href=../../client/assets/css/reset.css>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <link rel=stylesheet href=../../client/assets/css/index.css>
+</head>
+
+<body>
+
+  <div class=navbar>
+    <div class=container>
+      <div class=relative>
+        <h1 class=logo-text>aryzing</h1>
+        <div class=nav>
+          <div class=v-flex>
+            <div class=item>About</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=posts>
+    <div class=container>
+
+      <!-- Pandoc output here -->
+      <div class=content>
+<h1 id="comparing-script-restart-using-node-nodemon-and-forever">Comparing script restart using node, nodemon, and forever</h1>
+<p>A common practice when working on server-side code is restarting the server after making changes, or after a server crash. Using <code>node</code> to restart the server manually can become tedious. To help out with this process, we can use <code>nodemon</code> or <code>forever</code>. Lets take a look at how these tools work. Specifically, we are interested on how they deal with finite vs infinite execution time scripts, what happens when changes are made to the script file, and what happens when there is an error.</p>
+<h2 id="infinite-loop-scripts">Infinite loop scripts</h2>
+<p>Lets start analyzing infinite loop scripts.</p>
+<pre class="js"><code>// index-infinite.js
+while (1) {
+  console.log(&#39;Running...&#39;);
+}</code></pre>
+<p>With this simple script, the outputs with each of the different commands are</p>
+<pre class="sh"><code>$ node index-infinite.js
+Running...
+Running...
+Running...
+^C</code></pre>
+<pre class="sh"><code>$ nodemon index-infinite.js
+[nodemon] 1.9.2
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node index-infinite-mock-output.js`
+Running...
+Running...
+Running...
+^C</code></pre>
+<pre class="sh"><code>$ forever index-infinite.js
+warn:    --minUptime not set. Defaulting to: 1000ms
+warn:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+Running...
+Running...
+Running...
+^C</code></pre>
+<p>All three have identical behavior. They run indefinitely. However, what happens when an error occurs? Lets take a look. The script used for this test is</p>
+<pre class="js"><code>// index-infinite-error.js
+while (1) {
+  console.log(&#39;Running...&#39;);
+  if (Math.random() &gt; 0.8) {
+    throw &#39;20% chance of failing&#39;;
+  }
+}</code></pre>
+<p>The outputs for each of the commands are</p>
+<pre class="sh"><code>$ node index-infinite-error.js
+Running...
+Running...
+Running...
+
+/path/index-infinite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing</code></pre>
+<p>Using <code>node</code>, when the error is encountered, execution stops and the terminal prompt is shown.</p>
+<pre class="sh"><code>$ nodemon index-infinite-error.js
+[nodemon] 1.9.2
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node index-infinite-error.js`
+Running...
+Running...
+Running...
+
+/path/index-infinite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+[nodemon] app crashed - waiting for file changes before starting...</code></pre>
+<p>Using <code>nodemon</code>, a similar output is shown. However, the prompt is not returned to the user on error, and it waits for file changes to be made. If file changes are made, the script will re-run.</p>
+<pre class="sh"><code>forever --spinSleepTime 3000 index-infinite-error.js
+warn:    --minUptime not set. Defaulting to: 1000ms
+Running...
+Running...
+Running...
+Running...
+Running...
+
+/path/index-infinite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+error: Forever detected script exited with code: 1
+error: Script restart attempt #1
+Running...
+Running...
+
+/path/index-infinite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+error: Forever detected script exited with code: 1
+error: Script restart attempt #2
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+
+/path/index-infinite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+
+#etc...</code></pre>
+<p>Whenver the script errors out, forever will re-run it. If the script fails shortly after restarting, specifically, less than the specified <code>minUptime</code> value, it will wait <code>spinSleepTime</code> amount of miliseconds before restarting. It can be convenient to set these values to avoid overloading your computer. The defaults are both 1 second.</p>
+<h2 id="finite-length-scripts">Finite length scripts</h2>
+<p>Now lets analyze what happens when a finite execution time script is run with each of these commands. The script we will use is</p>
+<pre class="javascript"><code>// index-finite.js
+for (var i = 0; i &lt; 10; i++) {
+  console.log(&#39;Running...&#39;);
+}</code></pre>
+<p>When run with <code>node</code>, it prints <code>Running...</code> ten times to the console as expected.</p>
+<p>With nodemon it runs once, and waits for file changes before running it again.</p>
+<pre class="sh"><code>$ nodemon index-finite.js
+[nodemon] 1.9.2
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node index-finite.js`
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+[nodemon] clean exit - waiting for changes before restart</code></pre>
+<p>So nodemon's attitude towards execution is something along the lines of &quot;run indefinitely until error or script end, and then wait for file changes&quot;.</p>
+<p>Forever, on the other hand, does not seem to play nice with finite length scripts. Upon completion, it will just sit there, without returning the prompt to the user.</p>
+<pre class="sh"><code>$ forever index-finite.js
+warn:    --minUptime not set. Defaulting to: 1000ms
+warn:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+Running...
+error: Forever detected script exited with code: 0
+# prompt not returned to user
+# must exit with ^C
+^C</code></pre>
+<p>Modifying the file does not trigger forever to restart execution either. It just sits there... forever.</p>
+<p>However, what would happen if forever is run on a finite length script that throws an error before exiting cleanly? Will the error trigger the script to restart? Lets find out with the following script.</p>
+<pre class="javascript"><code>// index-finite-error.js
+for (var i = 0; i &lt; 10; i++) {
+  console.log(&#39;Running...&#39;);
+  if (Math.random() &gt; 0.8) {
+    throw &#39;20% chance of failing&#39;;
+  }
+}</code></pre>
+<p>The console output was</p>
+<pre class="sh"><code>$ forever --spinSleepTime 3000 index-finite-error.js
+warn:    --minUptime not set. Defaulting to: 1000ms
+Running...
+Running...
+
+/path/index-finite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+error: Forever detected script exited with code: 1
+error: Script restart attempt #1
+Running...
+
+/path/index-finite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+error: Forever detected script exited with code: 1
+error: Script restart attempt #2
+Running...
+Running...
+Running...
+Running...
+
+/path/index-finite-error.js:4
+    throw &#39;20% chance of failing&#39;;
+    ^
+20% chance of failing
+# etc...
+^C</code></pre>
+<p>Exiting with an error does trigger the script to be restarted.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>When running an infinite loop script, all three will run indefinitely as long as there are no errors. When an error is encountered, node will exit, nodemon will wait for file changes, and forever will restart immediately or after an <code>spinSleepTime</code> amount of time.</p>
+<p>With finite execution time scripts, node will eventually exit, with or without errors. Nodemon will always wait for file changes before runing the script again regardless of the exit status, and forever will hang on a clean exit, but will succesfully restart on error.</p>
+<h2 id="useful-snippets-and-links">Useful snippets and links</h2>
+<pre class="sh"><code>npm install -g nodemon</code></pre>
+<pre class="sh"><code>npm install -g forever</code></pre>
+<pre class="sh"><code># wait 3 secons before restarting if script is spinning
+forever --spinSleepTime 3000 index.js</code></pre>
+<p><a href="http://stackoverflow.com/questions/18390870/what-is-the-minuptime">SO Spinning and uptime</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw">MDN throw</a></p>
+<p>Disable automatic scrolling: Edit &gt; Profile Preferences &gt; Scrolling &gt; Scroll on keystroke</p>
+<p>Disable automatic scrolling: Edit &gt; Profile Preferences &gt; Scrolling &gt; Scroll on keystroke</p>
+
+      </div>
+
+    </div>
+  </div>
+
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+/*
+43F6FC light blue
+F0664C red-ish
+8950D9 purple
+F0D24C yellow
+49E560 green
+
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  background-color: #eee;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p, pre {
+  margin-bottom: 1.4rem;
+}
+p {
+  font: normal normal normal 1rem/1.4rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+pre {
+  font: normal normal normal 0.9rem/1.2rem 'Roboto Mono', monospace;
+}
+.content h1:first-of-type {
+  text-align: center;
+  font: normal normal bold 2rem/2.8rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1 {
+  font: normal normal bold 2rem/2.8rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h2 {
+  font: normal normal bold 1.6rem/2.24rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h3 {
+  font: normal normal bold 1.2rem/2.4rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.content h1, .content h2, .content h3 {
+  margin-bottom: 1.4rem;
+  margin-top: 2.5rem;
+}
+.content a {
+  color: #FF6D69;
+}
+.container {
+  position: relative;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.header {
+  text-align: center;
+  font: normal normal bold 2rem/3rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.logo-text {
+  font: normal normal normal 1.2rem/2rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.navbar {
+  position: relative;
+  background-color: #FF6D69;
+  /*   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75); */
+}
+.nav {
+  display: flex;
+  font-size: 1rem;
+  align-items: stretch;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+.relative {
+  position: relative;
+}
+.v-flex {
+  display: flex;
+  align-items: center;
+}
+.posts {
+  margin-top: 1rem;
+}
+.post {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.title {
+  font-size: 1.5rem;
+}
+.date {
+  font-size: 0.8rem;
+  color: #FF6D69;
+}
+.snippet {
+  margin-top: 0.4rem;
+  color: gray;
+}
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+.header {
+  margin-top: 0.5rem;
+}
+
+/* Responsive combined */
+
+@media (min-width: 500px) {
+  html {
+    font-size: 16px;
+  }
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 900px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+}
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono';
