@@ -1,0 +1,24 @@
+{
+  "name": "aryzing.net",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "build.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jquery": "*",
+    "jsdom": "*"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryzing/ary.net.git"
+  },
+  "author": "aryzing",
+  "bugs": {
+    "url": "https://github.com/aryzing/ary.net/issues"
+  },
+  "homepage": "https://github.com/aryzing/ary.net#readme"
+}
