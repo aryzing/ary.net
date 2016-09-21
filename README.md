@@ -5,22 +5,24 @@ Personal website
 
 This repo contains my personal site as well as tools to build pages for blog posts from markdown files. For the build process to work, you must have [pandoc][pandoc] installed on your system.
 
-The build tool looks for `index.md` markdown files in the post directories under `posts`. Post directories are expected to be named `YYYY-MM-DD-some-description`.
+The build tool looks for an `index.md` file in each post directory under the `posts` directory. Post directories are expected to be named `YYYY-MM-DD-some-description`.
 
-The build tool uses the post directory name to extract the post date and the first header in the index file to extract the post title. Currently, the description in the name of a post directory is not used.
+The build tool uses the post directory name to obtain the post date and the first header in the index file to obtain the post title. Currently, the description in the name of a post directory is not used.
 
-Runnig
+The command
 
 ```sh
 npm build
 ```
 
-will create an HTML page for each post found, and will insert HTML code into `index.html` that links to it. The created files are stored under `client/posts`. Since I am currently using GitHub's static page server, this means that these files must be necessarily committed despite being compiled output. Suggestions to avoid this are appreciated.
+will create an HTML page for each post found, and will insert a link to each in `index.html`. The created files are stored under `client/posts`. Since this project is intended to be used with GitHub's static page server, the compiled HTML post files must be necessarily committed. Suggestions to avoid this are appreciated. Note that as a result of the building process, `index.html` contains both written and compiled content. The compiled code is contained within `<div class=out>`.
 
 # Organization
 
-The files destined for the client are only those in `client/assets/css`. They are CSS files.
+Notable files in the project root are `index.html` and `build.js`. GitHub's static page server requires the index page to be at the root of the project. `build.js` is the script that creates post pages and links to them.
 
-The building process
+The posts are each within their own folder under `posts`. Each of these directories must contain an `index.md` file. Other files in the directory are ignored.
+
+Files destined for the client as well as other files such as templates are in `client`.
 
 [pandoc]: http://pandoc.org/
