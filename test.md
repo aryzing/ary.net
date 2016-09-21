@@ -1,7 +1,0 @@
-# One
-
-para
-
-## Two
-
-patan

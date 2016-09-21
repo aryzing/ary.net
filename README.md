@@ -12,7 +12,7 @@ The build tool uses the post directory name to obtain the post date and the firs
 The command
 
 ```sh
-npm build
+npm run build
 ```
 
 will create an HTML page for each post found, and will insert a link to each in `index.html`. The created files are stored under `client/posts`. Since this project is intended to be used with [GitHub Pages][github-pages], the compiled HTML post files must be necessarily committed. Suggestions to avoid this are appreciated. Note that as a result of the building process, `index.html` contains both written and compiled content. The compiled code is contained within `<div class=out>`.
