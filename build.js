@@ -72,7 +72,7 @@ postNames.forEach(postName => {
 								  </div>
 								</a>
               `);
-							postsDOM.append(post);
+							postsDOM.append(postDOM);
             }
 						// insert into index
 						$('.out').append(postsDOM);
