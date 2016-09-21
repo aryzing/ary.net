@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head>
+  <link rel="stylesheet" href="../../client/assets/css/reset.css">
+  <link rel="stylesheet" href="../../client/assets/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="container">
+      <div class="relative">
+        <h1 class="logo-text">aryzing</h1>
+        <div class="nav">
+          <div class="v-flex">
+            <div class="item">About</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="posts">
+    <div class="container">
+      <div class="content">
+
+        <!--start pandoc content-->
+        <div class="pandoc-out">
+<h1 id="tmux---terminal-multiplexer">tmux - Terminal Multiplexer</h1>
+<p>A great tool for your terminal is <code>tmux</code>. It allows you to graphically organize and split your shells, run programs in the background, and even share your shell session with another user.</p>
+<p>To install it on Ubuntu,</p>
+<pre class="sh"><code>sudo apt-get install tmux</code></pre>
+<h2 id="commands-and-shortcuts">Commands and shortcuts</h2>
+<p>The most common command you will be using is <code>ctrl-b</code>. This tells tmux that the next command you are going to type is for tmux, not the shell.</p>
+<p>For example, <code>ctrl-b c</code> <strong>creates a new window</strong>. You can see the new window at the bottom of your screen.</p>
+<p>All your windows are given default names. To <strong>change the default window name</strong>, use <code>ctrl-b ,</code>. A prompt asking for a new name will appear. Pressing enter assigns the new name.</p>
+<p>To <strong>move between windows</strong>, we can use <code>ctrl-b n</code> and <code>ctrl-b p</code> for next and previous, respectively.</p>
+<p>If you want to see a <strong>list</strong> of all your windows, you can use <code>ctrl-b w</code>. You can then use the arrows to select which window you want to switch to, or type the number of the corresponding window.</p>
+<p>Each window can be <strong>split into panes</strong> vertically or horizontally with <code>ctrl-b %</code> and <code>ctrl-b "</code>. Once split, the panes can be resized by <strong>holding down</strong> <code>ctrl-b</code> and using the arrows. To move between the panes, use <code>ctrl-b &lt;arrow&gt;</code>.</p>
+<p>Finally, <code>ctrl-b :</code> allows you to give named commands to tmux. For example, you can also split horizontally using <code>ctrl-b :</code> and then typing <code>split-window</code>.</p>
+<h2 id="sessions">Sessions</h2>
+<p>Upon starting tmux, a new session is created. We can <strong>detach</strong> from a session with <code>ctrl-b d</code>, meaning that the tmux server continues running in the background while control is restored to the previous shell.</p>
+<p>Every invocation of tmux creates a new session with an auto-increasing integer name starting with <code>0</code>. To create a new named session,</p>
+<pre class="sh"><code>tmux new -s mysession</code></pre>
+<p>Because detaching does not terminate tmux, child processes will continue to run. This allows us to start long running processes and detach from a session without killing the child processes.</p>
+<p>After having created a session, we can attach to it with</p>
+<pre class="sh"><code>tmux attach -t mysession</code></pre>
+<p>To list existing sessions,</p>
+<pre class="sh"><code>tmux list-sessions</code></pre>
+<h2 id="useful-commands">Useful commands</h2>
+<p>All commands can be configured with the <code>~/.tmux.conf</code> file. Two options that I find particularly useful to configure are the display times of messages. Starting with [version 2.2][v2.2], options can take a display time of <code>0</code> indicating a permanent display of messages until a key is pressed.</p>
+<pre class="sh"><code>set -g display-panes-time 5000
+set -g display-time 5000</code></pre>
+<p>To display all current key bindings, use <code>ctrl-b ?</code>. Below are some useful key bindings.</p>
+<h3 id="session">Session</h3>
+<p><code>tmux ls</code> (or tmux <code>list-sessions</code>)</p>
+<p><code>tmux new -s session-name</code></p>
+<p><code>ctrl-b d</code> Detach from session</p>
+<p><code>tmux attach -t session-name</code></p>
+<p><code>tmux kill-session -t session-name</code></p>
+<h3 id="window">Window</h3>
+<p><code>ctrl-b c</code> Create new window</p>
+<p><code>ctrl-b n</code> Move to the next window in list</p>
+<p><code>ctrl-b p</code> Move to the previous window in list</p>
+<p><code>ctrl-b l</code> Move to previously selected window</p>
+<p><code>ctrl-b w</code> List windows</p>
+<p><code>ctrl-b &lt;window-number&gt;</code> Move to window <code>&lt;window-number&gt;</code></p>
+<p><code>ctrl-b &amp;</code> Kill the current window (all panes)</p>
+<p><code>ctrl-b ,</code> Rename the current window</p>
+<h3 id="pane">Pane</h3>
+<p><code>ctrl-b q</code> Show pane numbers (used to switch between panes)</p>
+<p><code>ctrl-b %</code> Split vertically</p>
+<p><code>ctrl-b "</code> Split horizontally</p>
+<p><code>ctrl-b q</code> Show pane numbers, type number to switch</p>
+<p><code>ctrl-b {</code> Move the current pane left</p>
+<p><code>ctrl-b }</code> Move the current pane right</p>
+<p><code>ctrl-b : break-pane</code> Make pane its own window</p>
+<h2 id="resources-and-links">Resources and links</h2>
+<p><a href="http://man.openbsd.org/OpenBSD-current/man1/tmux.1">Manual</a>.</p>
+<p><a href="https://youtu.be/BHhA_ZKjyxo">YouTube1</a>.</p>
+<p><a href="https://youtu.be/norO25P7xHg">YouTube2</a>.</p>
+<p>[v2.2][<a href="https://raw.githubusercontent.com/tmux/tmux/master/CHANGES" class="uri">https://raw.githubusercontent.com/tmux/tmux/master/CHANGES</a>]</p>
+</div>
+        <!--end pandoc content-->
+
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body></html>

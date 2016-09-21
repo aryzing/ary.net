@@ -2,15 +2,20 @@
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
-const $ = require('jquery');
+var jquery = require('jquery');
 const jsdom = require("jsdom");
 
-const template = fs.readFileSync('template.html', 'utf8');
-const postsPath = path.resolve(__dirname, '/posts');
+const templatePath = path.resolve(__dirname, 'client', 'template.html');
+const template = fs.readFileSync(templatePath, 'utf8');
+const postsPath = path.resolve(__dirname, 'posts');
 
 // returns array of directory names in path `p`.
-var dirs = p => fs.readdirSync(p).filter(f => fs.statSync(p+"/"+f).isDirectory());
+var dirs = p => fs.readdirSync(p).filter(
+	f => fs.statSync(p + '/' + f).isDirectory()
+);
 var posts = dirs(postsPath);
+var titles = [];
+var dates = [];
 
 posts.forEach(post => {
 	jsdom.env(template, function(err, window) {
@@ -19,10 +24,12 @@ posts.forEach(post => {
 			return;
 		}
 
-		var $ = require("jquery")(window);
+		// var $ = require("jquery")(window);
+		// $ = $(window);
+		var $ = jquery(window);
 
 		var index = path.resolve(postsPath, post, 'index.md');
-		var out = path.resolve(__dirname, '/build');
+		var out = path.resolve(__dirname, 'build', post + '.html');
 
 		var command = `pandoc ${index} --from markdown_github --to html`;
 		exec(command, (error, stdout, stderr) => {
@@ -31,8 +38,12 @@ posts.forEach(post => {
 				return;
 			}
 
-			$('.pandoc-output').html('\n' + stdout);
-			console.log(jsdom.serializeDocument(window.document));
+			
+
+			$('.pandoc-content').html('\n' + stdout);
+			fs.mkdir('build', () => {
+				fs.writeFileSync(out, jsdom.serializeDocument(window.document));
+			});
 		});
 	});
 });

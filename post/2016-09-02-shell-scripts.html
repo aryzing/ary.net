@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head>
+  <link rel="stylesheet" href="../../client/assets/css/reset.css">
+  <link rel="stylesheet" href="../../client/assets/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="container">
+      <div class="relative">
+        <h1 class="logo-text">aryzing</h1>
+        <div class="nav">
+          <div class="v-flex">
+            <div class="item">About</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="posts">
+    <div class="container">
+      <div class="content">
+
+        <!--start pandoc content-->
+        <div class="pandoc-out">
+<h1 id="custom-shell-scripts">Custom shell scripts</h1>
+<h2 id="know-where-to-write-your-scripts">Know where to write your scripts</h2>
+<p>Before creating shell scrits, it is important to know where they are going to be written. It is important because different shells read different files.</p>
+<p>The two types of shells are <em>login</em> shells and <em>interactive</em> shells. A login shell just means that you had to type your credentails to gain access to it. An interactive shell is one where you can write commands to and typically displays a prompt.</p>
+<p>These two types are not mutually exclusive. For example, pressing <code>ctrl-alt-&lt;F1 ... F7&gt;</code> in Ubuntu takes you to a virtual login, interactive shell. However, the Gnome Terminal in Ubuntu accessed through its icon or with <code>ctrl-alt-t</code> is a non-login, interactive shell.</p>
+<p>The Gnome Terminal, when invoked as a non-login, interactive shell, reads <code>~/.bashrc</code> before startup. The interactive consoles read <code>~/.profile</code>.</p>
+<h2 id="custom-commands">Custom commands</h2>
+<p>Custom commands are useful to navigate quicker or execute long and hard to type commands. Two examples of such commands are</p>
+<pre class="sh"><code>alias notes='cd ~/workspace/notes'</code></pre>
+<p>and</p>
+<pre class="sh"><code>mkcdir() {
+  mkdir -p -- "$1" &amp;&amp; cd -P -- "$1"
+}</code></pre>
+<p>The first one takes me straight to my notes directory no matter where I am. The second creates a directory (including missing parent directories) and <code>cd</code>s into it.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Know where to write your scripts, and start saving time and keystrokes!</p>
+<h2 id="resources-and-links">Resources and links</h2>
+<p><a href="http://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment">StackOverflow</a>.</p>
+</div>
+        <!--end pandoc content-->
+
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body></html>

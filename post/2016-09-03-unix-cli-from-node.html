@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head>
+  <link rel="stylesheet" href="../../client/assets/css/reset.css">
+  <link rel="stylesheet" href="../../client/assets/css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="container">
+      <div class="relative">
+        <h1 class="logo-text">aryzing</h1>
+        <div class="nav">
+          <div class="v-flex">
+            <div class="item">About</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="posts">
+    <div class="container">
+      <div class="content">
+
+        <!--start pandoc content-->
+        <div class="pandoc-out">
+<h1 id="using-unix-commands-from-node">Using Unix Commands from Node</h1>
+<p>First step write .md file</p>
+<p>Second step, run pandoc on the file, and capture output</p>
+<p>Step three, use jquery to load the template. Will need to add jquery to server with</p>
+<pre class="sh"><code>npm install jquery -D</code></pre>
+<p>Step four, insert pandoc output into the corresponding position of the template</p>
+<p>Step five, write to disk</p>
+<pre class="js"><code>var exec = require('child_process').exec;</code></pre>
+</div>
+        <!--end pandoc content-->
+
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body></html>

@@ -1,11 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
   <link rel=stylesheet href=../../client/assets/css/reset.css>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
   <link rel=stylesheet href=../../client/assets/css/index.css>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/atom-one-light.min.css">
 </head>
 
 <body>
@@ -24,16 +23,18 @@
   </div>
   <div class=posts>
     <div class=container>
-
-      <!-- Pandoc output here -->
       <div class=content>
 
-      </div>
+        <!--start pandoc content-->
+        <div class=pandoc-out>
+        </div>
+        <!--end pandoc content-->
 
+      </div>
     </div>
   </div>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 
 </html>
