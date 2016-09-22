@@ -84,9 +84,6 @@ h3 {
   display: flex;
   align-items: center;
 }
-.posts {
-  margin-top: 1rem;
-}
 .post {
   background-color: white;
   padding: 1rem;
