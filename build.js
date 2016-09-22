@@ -67,8 +67,8 @@ postNames.forEach(postName => {
               var postDOM = $(`
 								<a href=${outDirRel}/${posts[i].name}.html>
 								  <div class=post>
-								    <div class=title>${posts[i].title}</div>
-								  	<div class=date>${posts[i].date}</div>
+								    <h1 class=title>${posts[i].title}</h1>
+								  	<p class=date>${posts[i].date}</p>
 								  </div>
 								</a>
               `);
