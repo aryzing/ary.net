@@ -25,7 +25,7 @@ p, pre {
 p {
   font: normal normal normal 1rem/1.4rem "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-pre {
+pre, code {
   font: normal normal normal 0.9rem/1.2rem 'Roboto Mono', monospace;
 }
 .content h1:first-of-type {
@@ -108,7 +108,9 @@ h3 {
 .header {
   margin-top: 0.5rem;
 }
-
+.scroll-past-end {
+  height: 50vh;
+}
 /* Responsive combined */
 
 @media (min-width: 500px) {
