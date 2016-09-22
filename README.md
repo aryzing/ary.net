@@ -41,9 +41,22 @@ p > code {
 
 ## Aligning homepage title and post title
 
-The title for the homepage is part of the template.
+The title for the homepage is part of the template,
 
 ```html
+<h1 class=title>Blog</h1>
+```
+
+yet the title for each post is generated dynamically from the first header in the markdown file. To give the site a more consistent look, the same styles have been applied to both elements.
+
+```css
+.title, .content h1:first-of-type {
+  text-align: center;
+  font: normal normal 700 2rem/2.8rem 'Open Sans', sans-serif;
+}
+```
+
+
 
 
 [pandoc]: http://pandoc.org/
