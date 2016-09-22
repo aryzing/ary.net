@@ -25,5 +25,11 @@ The posts (in markdown) are each within their own folder under `posts`. Each of 
 
 Files destined for the client as well as other files such as templates are in `client`. The compiled posts are in `client/posts`.
 
+# Styling
+
+## Code snippets and inline code
+
+Currently using highlight.js for the code snippets. It only highlights `<code>` snippets contained in `<pre>` tags. Inline code snippets in Markdown are not enclosed in `<pre>` tags when converted to HTML, so highlight.js ignores them and does not style them. To 
+
 [pandoc]: http://pandoc.org/
 [github-pages]: https://pages.github.com/
