@@ -26,20 +26,32 @@ p {
   font: normal normal 300 1rem/1.4rem Roboto, sans-serif;
 }
 pre, code {
-  font: normal normal normal 0.9rem/1.2rem 'Roboto Mono', monospace;
+  font: normal normal 500 0.8rem/1.2rem 'Roboto Mono', monospace;
+}
+p > code {
+  background-color: #fafafa;
+  padding-left: 0.3em;
+  padding-right: 0.3em
 }
 .content h1:first-of-type {
   text-align: center;
-  font: normal normal 700 2rem/2.8rem "Open Sans", sans-serif;
+  font: normal normal 700 2rem/2.8rem 'Open Sans', sans-serif;
+}
+.header {
+  text-align: center;
+  font: normal normal 700 2rem/3rem 'Open Sans', sans-serif;
+}
+.logo-text {
+  font: normal normal 500 1.2rem/2rem 'Open Sans',sans-serif;
 }
 h1 {
-  font: normal normal normal 2rem/2.8rem "Open Sans", sans-serif;
+  font: normal normal 500 2rem/2.8rem 'Open Sans', sans-serif;
 }
 h2 {
-  font: normal normal normal 1.6rem/2.24rem "Open Sans", sans-serif;
+  font: normal normal 500 1.6rem/2.24rem 'Open Sans', sans-serif;
 }
 h3 {
-  font: normal normal normal 1.2rem/2.4rem "Open Sans", sans-serif;
+  font: normal normal 500 1.2rem/2.4rem 'Open Sans', sans-serif;
 }
 .content h1, .content h2, .content h3 {
   margin-bottom: 1.4rem;
@@ -54,13 +66,6 @@ h3 {
   position: relative;
   padding-left: 1rem;
   padding-right: 1rem;
-}
-.header {
-  text-align: center;
-  font: normal normal bold 2rem/3rem "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-.logo-text {
-  font: normal normal normal 1.2rem/2rem "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .navbar {
   position: relative;
