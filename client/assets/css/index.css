@@ -19,10 +19,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
-p, pre {
+p, pre, ul {
   margin-bottom: 1.4rem;
 }
-p {
+ul {
+  list-style: disc inside none;
+}
+p, li {
   font: normal normal 300 1rem/1.4rem Roboto, sans-serif;
 }
 pre, code {
