@@ -12,7 +12,7 @@ F0D24C yellow
 }
 html {
   font-family: arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   background-color: #eee;
 }
 a {
@@ -52,8 +52,8 @@ h3 {
   max-width: 960px;
   margin: auto;
   position: relative;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .header {
   text-align: center;
