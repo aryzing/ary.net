@@ -12,7 +12,7 @@ F0D24C yellow
 }
 html {
   font-family: arial, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   background-color: #eee;
 }
 a {
@@ -122,12 +122,12 @@ h3 {
 }
 @media (min-width: 900px) {
   html {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 @media (min-width: 1200px) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 @import 'https://fonts.googleapis.com/css?family=Roboto+Mono';
