@@ -29,7 +29,22 @@ Files destined for the client as well as other files such as templates are in `c
 
 ## Code snippets and inline code
 
-Currently using highlight.js for the code snippets. It only highlights `<code>` snippets contained in `<pre>` tags. Inline code snippets in Markdown are not enclosed in `<pre>` tags when converted to HTML, so highlight.js ignores them and does not style them. To 
+Currently using highlight.js for the code snippets. It only highlights `<code>` snippets contained in `<pre>` tags. Inline code snippets in Markdown are not enclosed in `<pre>` tags when converted to HTML, so highlight.js ignores them and does not style them. To give the page a more consisten feel, the inline snippets are colored with the same background as the currently used highlight.js theme, Atom One Light.
+
+```css
+p > code {
+  background-color: #fafafa;
+  padding-left: 0.3em;
+  padding-right: 0.3em
+}
+```
+
+## Aligning homepage title and post title
+
+The title for the homepage is part of the template.
+
+```html
+
 
 [pandoc]: http://pandoc.org/
 [github-pages]: https://pages.github.com/
