@@ -115,4 +115,4 @@ To display all current key bindings, use `ctrl-b ?`. Below are some useful key b
 [1]:https://youtu.be/BHhA_ZKjyxo
 [2]:https://youtu.be/norO25P7xHg
 [man]: http://man.openbsd.org/OpenBSD-current/man1/tmux.1
-[v2.2][https://raw.githubusercontent.com/tmux/tmux/master/CHANGES]
+[v2.2]: https://raw.githubusercontent.com/tmux/tmux/master/CHANGES
