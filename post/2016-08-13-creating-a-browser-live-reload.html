@@ -20,12 +20,11 @@
       </div>
     </div>
   </div>
-  <div class="posts">
-    <div class="container">
-      <div class="content">
+  <div class="container">
+    <div class="content">
 
-        <!--start pandoc content-->
-        <div class="pandoc-out">
+      <!--start pandoc content-->
+      <div class="pandoc-out">
 <h1 id="creating-a-browser-live-reloader">Creating a browser live reloader</h1>
 <p>During development, it can be extremely useful to have your browser reload the page when new changes are made. To implement this functionality, we must understand that the browser has no way of knowing when files representing the content it is currently displaying have changed.</p>
 <p>To implement this behavior, we can use a script that continuously polls the server and executes a whole page reload when the server signals that a modification has taken place. To reload the page, we can use <code>document.location.reload()</code>.</p>
@@ -68,12 +67,11 @@ app.get('/live-reload', (req, res) =&gt; {
 <p><a href="http://socket.io/">Socket IO</a></p>
 <p><a href="https://davidwalsh.name/fetch">DWB fetch</a></p>
 </div>
-        <!--end pandoc content-->
+      <!--end pandoc content-->
 
-      </div>
     </div>
   </div>
-  <div class="scroll-past-end"></div>
+<div class="scroll-past-end"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 
