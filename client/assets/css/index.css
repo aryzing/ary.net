@@ -36,6 +36,9 @@ p > code {
   padding-left: 0.3em;
   padding-right: 0.3em
 }
+.posts p {
+  margin-bottom: 0;
+}
 .title, .content h1:first-of-type {
   text-align: center;
   font: normal normal 700 2rem/2.8rem 'Open Sans', sans-serif;
