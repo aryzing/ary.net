@@ -35,7 +35,8 @@ Currently using highlight.js for the code snippets. It only highlights `<code>` 
 p > code {
   background-color: #fafafa;
   padding-left: 0.3em;
-  padding-right: 0.3em
+  padding-right: 0.3em;
+  color: #383a42;
 }
 ```
 
