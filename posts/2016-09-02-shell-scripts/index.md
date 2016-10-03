@@ -2,9 +2,9 @@
 
 ## Know where to write your scripts
 
-Before creating shell scrits, it is important to know where they are going to be written. It is important because different shells read different files.
+Before creating shell scripts, it is important to know where they are going to be written. It is important because different shells read different files.
 
-The two types of shells are *login* shells and *interactive* shells. A login shell just means that you had to type your credentails to gain access to it. An interactive shell is one where you can write commands to and typically displays a prompt.
+The two types of shells are *login* shells and *interactive* shells. A login shell just means that you had to type your credentials to gain access to it. An interactive shell is one where you can write commands to and typically displays a prompt.
 
 These two types are not mutually exclusive. For example, pressing `ctrl-alt-<F1 ... F7>` in Ubuntu takes you to a virtual login, interactive shell. However, the Gnome Terminal in Ubuntu accessed through its icon or with `ctrl-alt-t` is a non-login, interactive shell.
 

@@ -12,7 +12,7 @@ Note that this is a programmatic approach to page reloading. An alternative with
 
 which refreshes the page with a period of the specified length in seconds.
 
-To contact the server, we may choose to use AJAX or web sockets. With AJAX, we can query the server at regular intervals, and execute a full page reload when the server signals that a change has occurred. With web sockets, we could reload the page when the broadcaster signals a change.
+To contact the server, we may choose to use AJAX or websockets. With AJAX, we can query the server at regular intervals, and execute a full page reload when the server signals that a change has occurred. With websockets, we could reload the page when the broadcaster signals a change.
 
 Let's explore these two options.
 
@@ -60,9 +60,9 @@ app.get('/live-reload', (req, res) => {
 
 The full runnable code for this example can be found [here][4]. Remember to run `npm i`.
 
-## Web Sockets
+## WebSockets
 
-
+Coming soon!
 
 ## Snippets and Links
 

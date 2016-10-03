@@ -31,7 +31,7 @@
 <p>Note that this is a programmatic approach to page reloading. An alternative with only pure HTML is to use</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">refresh</span><span class="ot"> content=</span><span class="st">5</span> <span class="kw">/&gt;</span></code></pre></div>
 <p>which refreshes the page with a period of the specified length in seconds.</p>
-<p>To contact the server, we may choose to use AJAX or web sockets. With AJAX, we can query the server at regular intervals, and execute a full page reload when the server signals that a change has occurred. With web sockets, we could reload the page when the broadcaster signals a change.</p>
+<p>To contact the server, we may choose to use AJAX or websockets. With AJAX, we can query the server at regular intervals, and execute a full page reload when the server signals that a change has occurred. With websockets, we could reload the page when the broadcaster signals a change.</p>
 <p>Let's explore these two options.</p>
 <h2 id="ajax">AJAX</h2>
 <p>We will use <code>fetch</code> to send requests to the server. The server will be set up to respond to these requests with the date of the last build.</p>
@@ -61,7 +61,8 @@ app.get('/live-reload', (req, res) =&gt; {
   res.json({last: now});
 });</code></pre>
 <p>The full runnable code for this example can be found <a href="link_to_github">here</a>. Remember to run <code>npm i</code>.</p>
-<h2 id="web-sockets">Web Sockets</h2>
+<h2 id="websockets">WebSockets</h2>
+<p>Coming soon!</p>
 <h2 id="snippets-and-links">Snippets and Links</h2>
 <p><a href="http://stackoverflow.com/questions/13376048/how-do-i-programmatically-refresh-a-browser">SO Programatically Refresh Browser</a></p>
 <p><a href="http://socket.io/">Socket IO</a></p>
