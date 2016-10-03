@@ -34,7 +34,8 @@ pre, code {
 p > code {
   background-color: #fafafa;
   padding-left: 0.3em;
-  padding-right: 0.3em
+  padding-right: 0.3em;
+  color: #383a42;
 }
 .posts p {
   margin-bottom: 0;
