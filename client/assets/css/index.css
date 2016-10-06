@@ -57,8 +57,16 @@ h2 {
 h3 {
   font: normal normal 500 1.2rem/2.4rem 'Open Sans', sans-serif;
 }
-.logo-text {
-  font: normal normal 500 2rem/4rem 'Open Sans',sans-serif;
+.home {
+  display: flex;
+  align-items: stretch;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+.home-text {
+  font: normal normal 500 2rem/normal 'Open Sans',sans-serif;
 }
 .content a, .footer a {
   color: #FF6D69;
@@ -87,9 +95,14 @@ h3 {
 .relative {
   position: relative;
 }
+.scaffold {
+  position: relative;
+  height: 4em;
+}
 .v-flex {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 .post {
   background-color: white;
