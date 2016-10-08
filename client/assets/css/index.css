@@ -147,6 +147,10 @@ h3 {
 .book {
   font-style: italic;
 }
+.description {
+  font-style: italic;
+  margin-top: -1.2rem;
+}
 .tool {
   font-weight: bold;
 }
