@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>aryzing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/client/assets/css/reset.css">
+  <link rel="stylesheet" href="/client/assets/css/index.css">
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="client/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="client/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="client/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="client/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="client/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="client/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="client/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="client/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="client/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="client/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="client/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="client/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="client/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="client/assets/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="container">
+      <div class="scaffold">
+        <div class="home">
+          <a href="/">
+            <div class="v-flex">
+              <h1 class="home-text">aryzing</h1>
+            </div>
+          </a>
+        </div>
+        <div class="nav">
+          <a href="/about">
+            <div class="v-flex">
+              <div class="item">About</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img class=profile-picture src=https://www.gravatar.com/avatar/eb1f15110349cc3c1180d3f70fd10fbf?s=200>
+  <div class=bio>
+    <div class=container>
+      <p>
+        Hi, my name is Edu. You'll find me online as <code>aryzing</code>. I love using technology to better our human condition. It makes me happy to dive deep into a new idea or technology and use it to deliver amazing solutions. A few things that have
+        changed my life include K&amp;R's <span class=book>Programming in C</span>, Proakis and Manolakis' <span class=book>Digital Signal Processing</span>, and git.
+      </p>
+      <p>
+        Check out the <a href=#tech>tech I use</a>, my <a href=#portfolio>portfolio projects</a>, and my <a href=#contrib>open source contributions</a>.
+      </p>
+    </div>
+  </div>
+  <div class=container>
+    <div class=content>
+      <h2 id=tech>Full-Stack Engineer</h2>
+      <p>
+        These are a few tools I have experience with.
+      </p>
+      <ul>
+        <!-- <li>
+          <span class=tool>Data structures</span>
+          <br> -->
+        <li>
+          <p>
+            <span class=tool>Version Control</span> My tool of choice is Git. Check out <a href="">my configuration</a>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class=tool>Test Driven Development</span> My tests are usually powered by Mocha and Chai, run with TravisCI, and linked to GitHub. Tests run before merging branches. Used <a href="">here</a> for testing Redux action creators and reducers.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class=tool>Service Oriented Architecture</span> Important for maintaining medium to larg-scale applications. <a href="">Blyp</a> (a point-of-sale app), was built atop three services: Google App Engine's auto-scalable compute nodes (handling authentication and API calls), mLab's mongoDB service, and Google Cloud Storage for files uploaded by users.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class=tool>RESTful API Design</span> I enjoy creating APIs; I view it as creating an efficient, purpose-specific language for a community of people who share the same information-exchange goals. <a href="">Here</a> is the specification of <a href="">this</a> particular implementation.
+          </p>
+        </li>
+        <li>
+          <p>
+            <span class=tool>OAuth and JWT</span> The authorization framework specified by <a href="https://tools.ietf.org/html/rfc6749">RFC 6749</a> and <a href="https://tools.ietf.org/html/rfc6750">RFC 6750</a>. Used <a href="">in this project</a> to define user role and modify UI according to permissions.
+          </p>
+        </li>
+      <div class=skills>
+        <div class="front end">
+          <h3>Front-end</h3>
+          <p>
+            <img src="/client/assets/tech-icons/react.png">React. Blyp is a SPA using React. It is a pleasure to use with ES6 and Redux.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/redux.png">Redux. Used here to keep application state for authentication, shopping basket, network state, product prices, payments, and UI.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/D3.png">D3. Checkout this game leo and I built using D3
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/jquery.png">jQuery. Where simple DOM manipulatin began!
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/css3.png">CSS3. Media queries, fonts, and responsive design. This page uses CSS3, as do these (<a href="">1</a>, <a href="">2</a>, <a href="">3</a>) snippets.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/babel.png">Babel. Used anywhere I code using the latest ECMAScript features.
+          </p>
+        </div>
+        <div class="back end">
+          <h3>Back-end</h3>
+          <p>
+            <img src="/client/assets/tech-icons/node.png">Node. Used in many of my projects.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/express.png">Express. My go-to web framework. Have used it to create RESTful APIs.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/mongodb.png">MongoDB. Suitable for storing document based records, such as these.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/mysql.png">MySQL. Good relational DB. Used here.
+          </p>
+          <p>
+            <img src="/client/assets/tech-icons/webpack.png">Webpack. Used to bundle and minify images, css, and JS into a single file. Source maps are great for debugging. Can directly handle Babel transpiling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="scroll-past-end"></div>
+  <div class="footer">
+    <p><a href="/">aryzing</a> ♦ <a href="/about.html">About</a></p>
+  </div>
+
+</body>
+
+</html>
