@@ -57,6 +57,13 @@ h2 {
 h3 {
   font: normal normal 500 1.2rem/2.4rem 'Open Sans', sans-serif;
 }
+header {
+  text-align: center;
+  font-size: 1.2rem;
+}
+header i {
+
+}
 .home {
   display: flex;
   align-items: stretch;
