@@ -15,71 +15,71 @@ const outDirAbs = path.resolve(__dirname, outDirRel);
 
 // returns array of directory names in path `p`.
 var dirs = p => fs.readdirSync(p).filter(
-	f => fs.statSync(p + '/' + f).isDirectory()
+  f => fs.statSync(p + '/' + f).isDirectory()
 );
 var postNames = dirs(postsPath);
 var posts = [];
 
 postNames.forEach(postName => {
-	jsdom.env(postTemplateHtml, function(err, window) {
-		if (err !== null) {
-			console.error(err);
-			return;
-		}
+  jsdom.env(postTemplateHtml, function(err, window) {
+    if (err !== null) {
+      console.error(err);
+      return;
+    }
 
-		var $ = jquery(window);
+    var $ = jquery(window);
 
-		var indexPath = path.resolve(postsPath, postName, 'index.md');
-		var outPath = path.resolve(__dirname, outDirRel, postName + '.html');
+    var indexPath = path.resolve(postsPath, postName, 'index.md');
+    var outPath = path.resolve(__dirname, outDirRel, postName + '.html');
 
-		var command = `pandoc ${indexPath} --from markdown_github --to html`;
-		exec(command, (error, stdout, stderr) => {
-			if (error !== null) {
-				console.error(error);
-				return;
-			}
+    var command = `pandoc ${indexPath} --from markdown_github --to html`;
+    exec(command, (error, stdout, stderr) => {
+      if (error !== null) {
+        console.error(error);
+        return;
+      }
 
-			var post = {};
-			post.date = postName.slice(0, 10);
-			post.title = $(`<div>${stdout}</div>`).find('h1').text();
+      var post = {};
+      post.date = postName.slice(0, 10);
+      post.title = $(`<div>${stdout}</div>`).find('h1').text();
       post.name = postName;
-			posts.push(post);
+      posts.push(post);
 
-			$('.pandoc-out').html('\n' + stdout);
-			fs.mkdir(outDirAbs, () => {
-				fs.writeFileSync(outPath, jsdom.serializeDocument(window.document));
+      $('.pandoc-out').html('\n' + stdout);
+      fs.mkdir(outDirAbs, () => {
+        fs.writeFileSync(outPath, jsdom.serializeDocument(window.document));
 
-				// check to see if all posts have been processed
-				if (posts.length === posts.length) {
+        // check to see if all posts have been processed
+        if (posts.length === posts.length) {
           // sort by date (newest first)
-					posts.sort((a, b) => a.date < b.date ? 1 : -1);
-					// make new window from index document
+          posts.sort((a, b) => a.date < b.date ? 1 : -1);
+          // make new window from index document
           jsdom.env(indexTemplateHtml, function(err, window) {
-        		if (err !== null) {
-        			console.error(err);
-        			return;
-        		}
+            if (err !== null) {
+              console.error(err);
+              return;
+            }
 
-						// connect index template's window to jquery
+            // connect index template's window to jquery
             var $ = jquery(window);
             var postsDOM = $('<div></div>');
             for (var i = 0; i < posts.length; i++) {
               var postDOM = $(`
-								<a href=${outDirRel}/${posts[i].name}.html>
-								  <div class=post>
-								  	<p class=date>${posts[i].date}</p>
-										<p>${posts[i].title}</p>
-								  </div>
-								</a>
+                <a href=${outDirRel}/${posts[i].name}.html>
+                  <div class=post>
+                    <p class=date>${posts[i].date}</p>
+                    <p>${posts[i].title}</p>
+                  </div>
+                </a>
               `);
-							postsDOM.append(postDOM);
+              postsDOM.append(postDOM);
             }
-						// insert into index
-						$('.out').append(postsDOM);
-						fs.writeFileSync('index.html', jsdom.serializeDocument(window.document));
+            // insert into index
+            $('.out').append(postsDOM);
+            fs.writeFileSync('index.html', jsdom.serializeDocument(window.document));
           });
-				}
-			});
-		});
-	});
+        }
+      });
+    });
+  });
 });
